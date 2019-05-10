@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: great
+server:
+  port: 6060
+  
