@@ -1,6 +1,18 @@
+server:
+  port: 6060
+
 spring:
   application:
     name: great
-server:
-  port: 6060
+  datasource:
+    url: jdbc:postgresql://localhost/greatness
+    username: postgres
+    password: Luger9mm
+      
+logging:
+  level: 
+    com.greatness: DEBUG
+    org.hibernate: error
+  
+      
   
