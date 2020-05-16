@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: great
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true  
   datasource:
     url: jdbc:postgresql://localhost/greatness
     username: postgres
@@ -13,6 +17,14 @@ logging:
   level: 
     com.greatness: DEBUG
     org.hibernate: error
+  file: 
+    name: logs/greatness.log
+    max-size: 2000kb
+    max-history: 5
+    
+    
+    
+    
   
       
   

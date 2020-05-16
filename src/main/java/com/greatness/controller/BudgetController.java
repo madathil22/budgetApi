@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.greatness.dto.LiabilityDTO;
+import com.greatness.dto.liability.LiabilityEntity;
 import com.greatness.service.BudgetService;
 import com.greatness.vo.StatusVO;
 
@@ -20,8 +20,8 @@ public class BudgetController {
 	private BudgetService service;
 	
 	@RequestMapping("/saveliability")
-	public StatusVO saveliability(@RequestParam String name, @RequestParam String description) {
-		service.saveliability(name, description);
+	public StatusVO saveliability(@RequestParam String name, @RequestParam String description, @RequestParam Long value) {
+		service.saveliability(name, description, value);
 		return new StatusVO(HttpStatus.OK, "SAVE success");
 	}
 	
@@ -32,7 +32,7 @@ public class BudgetController {
 	}
 	
 	@RequestMapping("/getAllLiability")
-	public List<LiabilityDTO> getAllLiability(){
+	public List<LiabilityEntity> getAllLiability(){
 		return service.getAllLiability();
 	}
 	

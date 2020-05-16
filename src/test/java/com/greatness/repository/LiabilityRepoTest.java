@@ -1,12 +1,18 @@
 package com.greatness.repository;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
+import javax.transaction.Transactional;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import static org.junit.Assert.*;
 
 import com.greatness.BaseTest;
-import com.greatness.dto.LiabilityDTO;
+import com.greatness.dto.liability.LiabilityEntity;
+import com.greatness.dto.liability.LiabilityRepo;
 
+@Transactional
 public class LiabilityRepoTest extends BaseTest{
 
 	@Autowired
@@ -14,12 +20,12 @@ public class LiabilityRepoTest extends BaseTest{
 	
 	@Test
 	public void testInsertstoLiability() {
-		LiabilityDTO dto=new LiabilityDTO("testname","testdesc");
+		LiabilityEntity dto=new LiabilityEntity("testname","testdesc",500L);
 		repo.save(dto);
 		
 		
 		
-		LiabilityDTO dtofromdb=repo.findByName("testname");
+		LiabilityEntity dtofromdb=repo.findByName("testname");
 		assertNotNull("Record to be present", dtofromdb);
 		
 		dtofromdb=repo.findByName("testname2");

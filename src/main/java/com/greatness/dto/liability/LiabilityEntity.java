@@ -1,4 +1,4 @@
-package com.greatness.dto;
+package com.greatness.dto.liability;
 
 import java.io.Serializable;
 
@@ -16,7 +16,10 @@ import lombok.RequiredArgsConstructor;
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class LiabilityDTO implements Serializable{
+public class LiabilityEntity implements Serializable{
+
+private static final long serialVersionUID = 1L;
+
 @Id
 @GeneratedValue(strategy=GenerationType.SEQUENCE)
 private long id;
@@ -26,5 +29,8 @@ private String name;
 
 @NonNull
 private String description;
+
+@NonNull
+private Long amount;
 
 }
