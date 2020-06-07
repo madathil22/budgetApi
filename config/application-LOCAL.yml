@@ -6,7 +6,7 @@ spring:
     name: great
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     show-sql: true  
   datasource:
     url: jdbc:postgresql://localhost/greatness

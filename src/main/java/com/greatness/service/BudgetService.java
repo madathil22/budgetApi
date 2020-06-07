@@ -5,18 +5,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.greatness.dto.liability.LiabilityEntity;
-import com.greatness.dto.liability.LiabilityRepo;
+import com.greatness.entity.liability.LiabilityEntity;
+import com.greatness.entity.liability.LiabilityRepo;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class BudgetService {
 
-	@Autowired
-	private LiabilityRepo repoLiab;
+	private final LiabilityRepo repoLiab;
 	
-	public void saveliability(String name, String description,Long value) {
-		LiabilityEntity dto=new LiabilityEntity(name,description,value);
-		repoLiab.save(dto);
+	public void saveliability(LiabilityEntity entity) {
+		repoLiab.save(entity);
 	}
 	
 	public List<LiabilityEntity> getAllLiability(){
@@ -25,5 +26,9 @@ public class BudgetService {
 	
 	public void deleteliability(Long id) {
 		repoLiab.deleteById(id);
+	}
+	
+	public LiabilityEntity findLiabilityById(Long id){
+		return repoLiab.findById(id).get();
 	}
 }

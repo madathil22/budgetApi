@@ -1,4 +1,4 @@
-package com.greatness.dto;
+package com.greatness.entity;
 
 import java.io.Serializable;
 

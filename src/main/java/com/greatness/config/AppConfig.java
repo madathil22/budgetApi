@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -33,6 +34,11 @@ public class AppConfig {
 		.username(username)
 		.password(password)
 		.build();		
+	}
+	
+	@Bean
+	public ModelMapper modelMapper() {
+		return new ModelMapper();
 	}
 	
 }

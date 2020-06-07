@@ -9,8 +9,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.greatness.BaseTest;
-import com.greatness.dto.liability.LiabilityEntity;
-import com.greatness.dto.liability.LiabilityRepo;
+import com.greatness.entity.liability.LiabilityEntity;
+import com.greatness.entity.liability.LiabilityRepo;
 
 @Transactional
 public class LiabilityRepoTest extends BaseTest{

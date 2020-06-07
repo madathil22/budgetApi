@@ -1,4 +1,4 @@
-package com.greatness.dto.liability;
+package com.greatness.entity.liability;
 
 import org.springframework.data.repository.CrudRepository;
 

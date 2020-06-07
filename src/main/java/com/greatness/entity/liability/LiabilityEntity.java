@@ -1,4 +1,4 @@
-package com.greatness.dto.liability;
+package com.greatness.entity.liability;
 
 import java.io.Serializable;
 
@@ -22,7 +22,7 @@ private static final long serialVersionUID = 1L;
 
 @Id
 @GeneratedValue(strategy=GenerationType.SEQUENCE)
-private long id;
+private Long id;
 
 @NonNull
 private String name;
