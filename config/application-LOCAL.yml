@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: great
+    name: homebudget
   jpa:
     hibernate:
       ddl-auto: update

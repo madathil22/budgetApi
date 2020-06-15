@@ -1,9 +1,13 @@
-package com.greatness.entity.liability;
+package com.greatness.entity.income;
+
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.greatness.entity.CreateUpdateAuditEntity;
 
@@ -13,12 +17,12 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
-@Entity(name = "BUDGET_LIABILITY")
+@Entity(name = "BUDGET_INCOME")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class LiabilityEntity extends CreateUpdateAuditEntity {
+public class IncomeEntity extends CreateUpdateAuditEntity {
 
 	/**
 	 * 
@@ -30,12 +34,13 @@ public class LiabilityEntity extends CreateUpdateAuditEntity {
 	private Long id;
 
 	@NonNull
-	private String name;
+	private String source;
 
 	@NonNull
-	private String description;
+	@Temporal(TemporalType.DATE)
+	private Date incomedate;
 
 	@NonNull
-	private Long amount;
+	private Long income;
 
 }

@@ -20,7 +20,7 @@ public class LiabilityRepoTest extends BaseTest{
 	
 	@Test
 	public void testInsertstoLiability() {
-		LiabilityEntity dto=new LiabilityEntity("testname","testdesc",500L);
+		LiabilityEntity dto=new LiabilityEntity(null,"testname","testdesc",500L);
 		repo.save(dto);
 		
 		

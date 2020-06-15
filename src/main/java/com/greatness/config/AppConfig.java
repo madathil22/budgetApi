@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import javax.sql.DataSource;
 
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -38,7 +39,9 @@ public class AppConfig {
 	
 	@Bean
 	public ModelMapper modelMapper() {
-		return new ModelMapper();
+		ModelMapper mapper=new ModelMapper();
+		mapper.getConfiguration().setAmbiguityIgnored(true);
+		return mapper;
 	}
 	
 }
