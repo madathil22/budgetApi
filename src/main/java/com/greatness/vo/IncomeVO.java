@@ -14,4 +14,5 @@ public class IncomeVO {
 	private String source;
 	private Date incomedate;
 	private Long income;
+	private boolean modified;
 }
