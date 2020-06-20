@@ -12,4 +12,5 @@ public class LiabilityVO {
 	private String name;
 	private String description;
 	private Long amount;
+	private boolean modified;
 }

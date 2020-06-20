@@ -40,9 +40,16 @@ public class BudgetController {
 	}
 
 	@PostMapping("/deleteliability")
-	public StatusVO deleteliability(@RequestParam Long id) {
-		service.deleteliability(id);
+	public StatusVO deleteliability(@RequestParam(value = "recId", required = true) Long recId) {
+		service.deleteliability(recId);
 		return new StatusVO(HttpStatus.OK, "DELETE success");
+	}
+	@PostMapping("/updateliability")
+	public StatusVO updateliability(@RequestBody List<LiabilityVO> liabilities) {
+		liabilities.forEach(liability -> {
+			service.saveliability(this.convertToEntity_Liabilty(liability));
+		});
+		return new StatusVO(HttpStatus.OK, "SAVE success");
 	}
 
 	@GetMapping("/getAllLiability")
@@ -51,7 +58,7 @@ public class BudgetController {
 	}
 
 	private LiabilityVO convertToVo_Liability(LiabilityEntity entity) {
-		LiabilityVO vo = new LiabilityVO(entity.getId(), entity.getName(), entity.getDescription(), entity.getAmount());
+		LiabilityVO vo = new LiabilityVO(entity.getId(), entity.getName(), entity.getDescription(), entity.getAmount(),false);
 		return vo;
 	}
 
