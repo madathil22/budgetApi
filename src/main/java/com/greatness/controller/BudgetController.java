@@ -32,75 +32,68 @@ public class BudgetController {
 
 	private final BudgetService service;
 	private final ModelMapper modelMapper;
-	
+
 	@PostMapping("/saveliability")
 	public StatusVO saveliability(@RequestBody LiabilityVO liabilityreq) {
 		service.saveliability(this.convertToEntity_Liabilty(liabilityreq));
 		return new StatusVO(HttpStatus.OK, "SAVE success");
 	}
-	
+
 	@PostMapping("/deleteliability")
 	public StatusVO deleteliability(@RequestParam Long id) {
 		service.deleteliability(id);
 		return new StatusVO(HttpStatus.OK, "DELETE success");
 	}
-	
+
 	@GetMapping("/getAllLiability")
-	public List<LiabilityVO> getAllLiability(){
-		return service.getAllLiability()
-				.stream()
-				.map(this::convertToVo_Liability)
-				.collect(Collectors.toList());
+	public List<LiabilityVO> getAllLiability() {
+		return service.getAllLiability().stream().map(this::convertToVo_Liability).collect(Collectors.toList());
 	}
-	
+
 	private LiabilityVO convertToVo_Liability(LiabilityEntity entity) {
-		LiabilityVO vo=new LiabilityVO(entity.getId(),entity.getName(),entity.getDescription(),entity.getAmount());
+		LiabilityVO vo = new LiabilityVO(entity.getId(), entity.getName(), entity.getDescription(), entity.getAmount());
 		return vo;
 	}
-	
+
 	private LiabilityEntity convertToEntity_Liabilty(LiabilityVO vo) {
-		LiabilityEntity entity=new LiabilityEntity(vo.getId(),vo.getName(), vo.getDescription(), vo.getAmount());
+		LiabilityEntity entity = new LiabilityEntity(vo.getId(), vo.getName(), vo.getDescription(), vo.getAmount());
 		return entity;
 	}
-	
-	
-	
+
 	@PostMapping("/saveincome")
 	public StatusVO saveincome(@RequestBody IncomeVO incomereq) {
 		service.saveincome(this.convertToEntity_Income(incomereq));
 		return new StatusVO(HttpStatus.OK, "SAVE success");
 	}
-	
+
 	@PostMapping("/updateincome")
 	public StatusVO saveincome(@RequestBody List<IncomeVO> incomes) {
-		incomes.forEach(income-> {
+		incomes.forEach(income -> {
 			service.saveincome(this.convertToEntity_Income(income));
 		});
 		return new StatusVO(HttpStatus.OK, "SAVE success");
 	}
-	
+
 	@PostMapping("/deleteincome")
-	public StatusVO deleteincome(@RequestParam Long id) {
-		service.deleteincome(id);
+	public StatusVO deleteincome(@RequestParam(value = "recId", required = true) Long recId) {
+		service.deleteincome(recId);
 		return new StatusVO(HttpStatus.OK, "DELETE success");
 	}
-	
+
 	@GetMapping("/getAllIncome")
-	public List<IncomeVO> getAllIncome(){
-		return service.getAllIncome()
-				.stream()
-				.map(this::convertToVo_Income)
-				.collect(Collectors.toList());
+	public List<IncomeVO> getAllIncome() {
+		return service.getAllIncome().stream().map(this::convertToVo_Income).collect(Collectors.toList());
 	}
-	
+
 	private IncomeVO convertToVo_Income(IncomeEntity entity) {
-		IncomeVO vo=new IncomeVO(entity.getId(),entity.getSource(),entity.getIncomedate(),entity.getIncome(),false);
+		IncomeVO vo = new IncomeVO(entity.getId(), entity.getSource(), entity.getIncomedate(), entity.getIncome(),
+				false);
 		return vo;
 	}
-	
+
 	private IncomeEntity convertToEntity_Income(IncomeVO vo) {
-		IncomeEntity entity=new IncomeEntity(vo.getId(),vo.getSource(),vo.getIncomedate(),vo.getIncome());
+		IncomeEntity entity = new IncomeEntity(vo.getId(), vo.getSource(), vo.getIncomedate(), vo.getIncome());
 		return entity;
 	}
-	
+
 }
