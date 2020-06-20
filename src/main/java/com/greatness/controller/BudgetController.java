@@ -71,6 +71,14 @@ public class BudgetController {
 		return new StatusVO(HttpStatus.OK, "SAVE success");
 	}
 	
+	@PostMapping("/updateincome")
+	public StatusVO saveincome(@RequestBody List<IncomeVO> incomes) {
+		incomes.forEach(income-> {
+			service.saveincome(this.convertToEntity_Income(income));
+		});
+		return new StatusVO(HttpStatus.OK, "SAVE success");
+	}
+	
 	@PostMapping("/deleteincome")
 	public StatusVO deleteincome(@RequestParam Long id) {
 		service.deleteincome(id);
@@ -86,7 +94,7 @@ public class BudgetController {
 	}
 	
 	private IncomeVO convertToVo_Income(IncomeEntity entity) {
-		IncomeVO vo=new IncomeVO(entity.getId(),entity.getSource(),entity.getIncomedate(),entity.getIncome());
+		IncomeVO vo=new IncomeVO(entity.getId(),entity.getSource(),entity.getIncomedate(),entity.getIncome(),false);
 		return vo;
 	}
 	
